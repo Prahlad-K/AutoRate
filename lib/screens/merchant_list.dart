@@ -7,7 +7,7 @@ class MerchantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Merchant List - New York',
-      theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
+      //theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
       home: new ListPage(title: 'Merchant List - New York'),
     );
   }
@@ -26,11 +26,12 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+      //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: AppBar(
+        backgroundColor: Colors.white,
         elevation: 0.1,
-        backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-        title: Text(widget.title),
+        //backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+        title: Text(widget.title, style: TextStyle(color: Colors.black),),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.list),
