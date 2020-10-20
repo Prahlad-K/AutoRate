@@ -36,53 +36,56 @@ class MerchantDetail extends StatelessWidget {
       ),
       body: CustomScrollView(
         //sliver app bar used so that when user is scrolling up the description panel gets hidden
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 300.0,
-            pinned: true,
-            backgroundColor: Colors.white,
-            flexibleSpace:
+          slivers: <Widget>[
+            SliverAppBar(
+
+              expandedHeight: 300.0,
+              pinned: true,
+              backgroundColor: Colors.white,
+              flexibleSpace:
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    // exact location of merchant
-                    child: Text("Location", textAlign: TextAlign.left, style: TextStyle(fontSize: 20),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    // description of merchant
-                    child: Text("Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. As the world's largest coffeehouse chain, Starbucks is seen to be the main representation of the United States' second wave of coffee culture.[6][7] As of early 2020, the company operates over 30,000 locations worldwide in more than 70 countries. "),
-                  )
-                ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      // exact location of merchant
+                      child: Text("Location: Street 9, Downtown New York", textAlign: TextAlign.left, style: TextStyle(fontSize: 16),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      // ratings
+                      child: Text("Absolute Popularity Rating : 8.5 ", textAlign: TextAlign.left, style: TextStyle(fontSize: 16),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      // ratings
+                      child: Text("Relative Popularity Rating : 8.5 ", textAlign: TextAlign.left, style: TextStyle(fontSize: 16),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      // ratings
+                      child: Text("Distance Factor Rating : 8.5 ", textAlign: TextAlign.left, style: TextStyle(fontSize: 16),),
+                    ),
+                  ]
               ),
             ),
 
-          SliverFillRemaining(
-            //Swiper package used so that when swiping it snaps to next chart
-            child: new Swiper(
-              itemBuilder: (BuildContext context, int index) {
-                return lineCharts[index];
-              },
+            SliverFillRemaining(
+              //Swiper package used so that when swiping it snaps to next chart
+                child: new Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return lineCharts[index];
+                  },
 
-              itemCount: lineCharts.length,
-              // automatically swipes to next chart without user
-              autoplay: false,
-              pagination: new SwiperPagination(),
-              control: new SwiperControl(),
+                  itemCount: lineCharts.length,
+                  // automatically swipes to next chart without user
+                  autoplay: false,
+                  pagination: new SwiperPagination(),
+                  control: new SwiperControl(),
+                )
             )
-          )
 
-        ]
-      ),
-      //this is optional, to return to previous page
-      floatingActionButton: FloatingActionButton(
-        child: Text('back'),
-        onPressed: ()
-        {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MerchantList()));
-        },
+          ]
       ),
     );
   }
@@ -99,11 +102,11 @@ class SimpleLineChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-        child: new charts.LineChart(seriesList, animate: animate),
+      child: new charts.LineChart(seriesList, animate: animate),
     );
   }
 
-  /// Create one series with sample hard coded data.
+/// Create one series with sample hard coded data.
 
 }
 
@@ -119,11 +122,11 @@ List<charts.Series<LinearSales, int>> _createSampleData1() {
   return [
     new charts.Series<LinearSales, int>(
       id: 'Sales',
-      colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+      colorFn: (_, __) => charts.MaterialPalette.indigo.shadeDefault,
       domainFn: (LinearSales sales, _) => sales.day,
       measureFn: (LinearSales sales, _) => sales.sales,
-        data: data,
-  )
+      data: data,
+    )
   ];
 }
 
